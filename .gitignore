@@ -1,11 +1,17 @@
 # Build and Release Folders
+
 bin/
 bin-debug/
 bin-release/
+
 node_modules/
 bower_components/
-typings/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
 dist/
+typings/
 
 # Other files and folders
 .settings/
