@@ -13,6 +13,9 @@ coverage/
 dist/
 typings/
 
+target/
+.class
+
 # Other files and folders
 .settings/
 
