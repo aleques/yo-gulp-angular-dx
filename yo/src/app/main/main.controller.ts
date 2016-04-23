@@ -19,6 +19,8 @@ export class MainController {
   public dxGridDetailOptions : dx.dxDataGridOptions;
   public dxGridCompletedValue : any;
   public fakeData : FakeData;
+  public fileInput : HTMLInputElement;
+  public fileList : FileList;
 
   /* @ngInject */
   constructor ($timeout: angular.ITimeoutService, webDevTec: WebDevTecService, toastr: any, fakeData : FakeData) {
@@ -30,7 +32,6 @@ export class MainController {
     this.activate($timeout);
     this.fakeData = fakeData;
     this.dxFileUpOptions = {};
-    this.dxFileUpOptions.values = [];
     this.dxFileUpBtnOptions = {};
     this.dxGridOptions = {};
     
@@ -53,7 +54,9 @@ export class MainController {
     this.tokenSMS = '';
     this.dxFileUpOptions.labelText = 'ou arraste aqui';
     this.dxFileUpOptions.accept = '*.*';
-    this.dxFileUpOptions.uploadMode = 'useForm';
+    this.dxFileUpOptions.name = 'myFile[]';
+    this.dxFileUpOptions.values = [];
+    this.dxFileUpOptions.uploadMode = 'uploadMode';
     this.dxFileUpOptions.multiple = true;
     this.dxFileUpOptions.showFileList = true;
     this.dxFileUpOptions.selectButtonText = 'Selecionar arquivos';
@@ -155,7 +158,9 @@ export class MainController {
   }
 
   testeFormSubmit() {
-    DevExpress.ui.dialog.alert('aeeeeeee! token SMS - ' + this.tokenSMS, 'Showwww');
+    this.fileInput = <HTMLInputElement> document.getElementsByName(this.dxFileUpOptions.name)[0];
+    this.fileList = this.fileInput.files;
+    DevExpress.ui.dialog.alert("teste form - " + this.fileList[0].name + " e " + this.fileList[1].name, 'Showwww');
   }
 
   showToastr() {

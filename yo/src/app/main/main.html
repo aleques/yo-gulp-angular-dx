@@ -84,6 +84,24 @@
             <button id="upButton" type="submit" dx-button="main.dxFileUpBtnOptions"></button>
 
             <br><br><br><br><br>
+            
+            <div class="content">
+                <div ng-if="main.dxFileUpOptions.values.length > 0">
+                    <h4>Selected Files</h4>
+                </div>
+                <div ng-repeat="val in main.dxFileUpOptions.values">
+                    <div class="selected-item">
+                        Name:
+                        <span>{{val.name}}</span><br />
+                        Size: 
+                        <span>{{val.size}}</span>bytes<br />
+                        Type: 
+                        <span>{{val.type}}</span><br />
+                        Last Modified Date: 
+                        <span>{{val.lastModifiedDate}}</span>
+                    </div>
+                </div>
+            </div>
 
         </form>
     </div>

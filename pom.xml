@@ -6,54 +6,6 @@
     <artifactId>angular-java-helloworld</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
-	<!--
-	<repositories>
-        <repository>
-            <id>jboss-developer-staging-repository</id>
-            <url>http://jboss-developer.github.io/temp-maven-repo/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>jboss-enterprise-maven-repository</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jboss-developer-staging-repository</id>
-            <url>http://jboss-developer.github.io/temp-maven-repo/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>jboss-enterprise-maven-repository</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-	-->
 	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -187,7 +139,7 @@
 				  <configuration>
 					<executable>gulp</executable>
 					<arguments>
-					  <argument>force</argument>
+					  <argument>--force</argument>
 					</arguments>
 					<workingDirectory>${basedir}/yo</workingDirectory>
 				  </configuration>
