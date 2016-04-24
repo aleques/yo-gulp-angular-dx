@@ -4,6 +4,7 @@ import { config } from './index.config';
 import { routerConfig, RouterController } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
+import { Main2Controller } from './main2/main2.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { FakeData } from '../app/components/fakeData/fakeData.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
@@ -27,6 +28,7 @@ module appTeste {
     .service('webDevTec', WebDevTecService)
     .controller('RouterController', RouterController)
     .controller('MainController', MainController)
+    .controller('Main2Controller', Main2Controller)
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey);
 }

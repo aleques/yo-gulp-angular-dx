@@ -1,7 +1,24 @@
 export class FakeData {
 
+    /** @ngInject */
+    constructor(private $log: angular.ILogService, private $http: angular.IHttpService) {
 
-    constructor() {
+    }
+    
+    uploadFiles(upForm : HTMLFormElement): void {
+        var enctype : string = upForm.enctype;
+        this.$http.post("/api/UploadService/upload", new FormData(upForm),
+                        {
+                            headers: {  'Content-Type': undefined,
+                                        'Accept-Encoding' : enctype }
+                        }
+        )
+        .then((response: any): any => {
+            this.$log.info(response.data);
+        })
+        .catch((error: any): any => {
+            this.$log.error('XHR Failed for getContributors.\n', error.data);
+        });
     }
     
     getEmployees() : any[] {

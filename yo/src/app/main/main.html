@@ -64,7 +64,8 @@
     <br><br><br>
     
     <div id="container">
-        <form id="upForm" ng-submit="main.testeFormSubmit()">
+        <form id="upForm" name="upForm" method="POST" ng-submit="main.testeFormSubmit()" enctype="multipart/form-data">
+        <!--<form id="upForm" name="upForm" method="POST"  action="http://localhost:18080/angular-java-helloworld/api/UploadService/upload/" enctype="multipart/form-data">-->
 
           <br><br>
           
@@ -74,7 +75,7 @@
             <div class="dx-fieldset">
                 <div class="dx-field">
                     <div class="dx-field-label">Token SMS:</div>
-                    <div class="dx-field-value" dx-text-box="{ bindingOptions: { value: 'main.tokenSMS' } }"></div>
+                    <div class="dx-field-value"><input id="tokenSMS" name="tokenSMS" ng-model="main.tokenSMS"></div>
                 </div>
             </div>
             <div id="fileuploader-container">
@@ -84,7 +85,7 @@
             <button id="upButton" type="submit" dx-button="main.dxFileUpBtnOptions"></button>
 
             <br><br><br><br><br>
-            
+            <!--
             <div class="content">
                 <div ng-if="main.dxFileUpOptions.values.length > 0">
                     <h4>Selected Files</h4>
@@ -102,6 +103,7 @@
                     </div>
                 </div>
             </div>
+            -->
 
         </form>
     </div>

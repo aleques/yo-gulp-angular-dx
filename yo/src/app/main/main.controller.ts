@@ -2,6 +2,7 @@
 
 import { WebDevTecService, ITecThing } from '../components/webDevTec/webDevTec.service';
 import { FakeData } from '../components/fakeData/fakeData.service';
+import { IMasterScope } from '../model/IMasterScope';
 import dx = DevExpress.ui;
 
 
@@ -23,7 +24,7 @@ export class MainController {
   public fileList : FileList;
 
   /* @ngInject */
-  constructor ($timeout: angular.ITimeoutService, webDevTec: WebDevTecService, toastr: any, fakeData : FakeData) {
+  constructor ($rootScope : IMasterScope, $timeout: angular.ITimeoutService, webDevTec: WebDevTecService, toastr: any, fakeData : FakeData) {
     this.awesomeThings = new Array();
     this.webDevTec = webDevTec;
     this.classAnimation = '';
@@ -36,6 +37,13 @@ export class MainController {
     this.dxGridOptions = {};
     
     this.startDxComponents();
+    
+    if($rootScope.idArquivo == null) {
+        $rootScope.idArquivo = 0;
+    } else {
+        $rootScope.idArquivo = $rootScope.idArquivo + 1;
+        DevExpress.ui.dialog.alert("main1 - teste masterScope - " + $rootScope.idArquivo, 'Showwww');
+    }
   }
 
   /** @ngInject */
@@ -54,7 +62,7 @@ export class MainController {
     this.tokenSMS = '';
     this.dxFileUpOptions.labelText = 'ou arraste aqui';
     this.dxFileUpOptions.accept = '*.*';
-    this.dxFileUpOptions.name = 'myFile[]';
+    this.dxFileUpOptions.name = 'myFiles[]';
     this.dxFileUpOptions.values = [];
     this.dxFileUpOptions.uploadMode = 'uploadMode';
     this.dxFileUpOptions.multiple = true;
@@ -158,9 +166,13 @@ export class MainController {
   }
 
   testeFormSubmit() {
-    this.fileInput = <HTMLInputElement> document.getElementsByName(this.dxFileUpOptions.name)[0];
-    this.fileList = this.fileInput.files;
-    DevExpress.ui.dialog.alert("teste form - " + this.fileList[0].name + " e " + this.fileList[1].name, 'Showwww');
+    
+    //this.fileInput = <HTMLInputElement> document.getElementsByName(this.dxFileUpOptions.name)[0];
+    //this.fileList = this.fileInput.files;
+    
+    var uploadForm : HTMLFormElement = <HTMLFormElement> document.getElementById('upForm');
+    this.fakeData.uploadFiles(uploadForm);
+    DevExpress.ui.dialog.alert("chamada rest efetuada! ", 'Showwww');
   }
 
   showToastr() {

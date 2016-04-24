@@ -9,7 +9,9 @@ export function routerConfig($componentLoaderProvider: any) {
 export class RouterController {
   constructor($router: any) {
     $router.config([
-      { path: '/', component: 'main' }
+      { path: '/', component: 'main' },
+      { path: '/main', component: 'main' },
+      { path: '/main2', component: 'main2' }
     ]);
   }
 }
